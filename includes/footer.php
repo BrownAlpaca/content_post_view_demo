@@ -1,11 +1,10 @@
-		<footer class="bg-dark">
-			<p class="text-light">© Website developed by YUTAO XU</p>
+		<footer>
+			<div class="container">
+				<div class="footer bg-dark">
+					<span class="text-muted">© Website developed by YUTAO XU</span>
+				</div>
+			</div>		
 		</footer>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-</body>
-</html> 
-<?php 
-	$conn->close();
-?>   
+
+	</body>
+</html>

@@ -1,22 +1,30 @@
-<h4>C-3PO's historical ramblings</h4>
-		<?php 
-			$date="SELECT m_name, m_date, m_thought FROM mindfeed ORDER BY m_id DESC";
-			$result = $conn->query($date);
+			<!-- This section of the code lets us view past comments -->
+			<div class="py-5">
 
-			if ($result->num_rows > 0) {
-    		// output data of each row
-    			while($row = $result->fetch_assoc()) {
-        			echo '<div class="card"><div class="card-body"><img src="img/user.jpg" width="70" height="70" class="rounded-circle float-left" alt="user"><h6>'.$row["m_name"].'</h6><p class="text-dark">'.$row["m_date"].'</p><p class="text-dark">'.$row["m_thought"]."</p></div></div>";
+				<h3 class="h4 mb-3 font-weight-normal">Historical comments</h3>
 
-        			/*"<div class='card'>
-        					<div class='card-body'><
-        						img src='img/user.jpg' width='70' height='70' class='rounded-circle float-left' alt='user'>
-									<h7>". $row["m_name"]. "</h7>
-									<p class='text-dark'>".$row["m_date"]."</p>
-									<p class='text-dark'>".$row["m_thought"]."</p></div></div>";*/
-    			}
-			}
-			else{
-				echo "0 results";
-			}
-		?>	
+<?php
+	$sql = "SELECT * FROM mindfeed";
+    $retrieve_feed_result = $conn->query($sql);
+
+	if ($retrieve_feed_result->num_rows > 0) {
+		while ($row = $retrieve_feed_result->fetch_assoc()) {
+			$m_name = $row['m_name'];
+			$m_date = $row['m_date'];
+		    $m_thought = $row['m_thought'];
+		
+?>
+				<div class="media border p-3 my-3">
+					<img src="img/defaultprofile.png" alt="C-3PO" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+					<div class="media-body mt-3">
+						<h4><?php echo $m_name; ?> <small class="text-muted"><span class="small">on <?php echo $m_date; ?></span></small></h4>
+						<p><?php echo $m_thought; ?></p>
+					</div>
+				</div>
+
+				<?php
+						}
+					}
+				?>
+
+			</div>

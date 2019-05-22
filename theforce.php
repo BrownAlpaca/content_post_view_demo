@@ -13,11 +13,16 @@
 	 * The content for this file has been generated through https://www.lipsum.com
 	 * on 02 February 2019.
 	 */
-
+    session_start();
+    if($_SESSION["username"]==null){
+              header("Location: index.php?attempt=unauthorized_access");
+    }
 	require "includes/db.php";
 	require "includes/functions.php"; 
 
-?><!DOCTYPE html>
+
+?>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<title>The Force</title>
@@ -28,20 +33,34 @@
 
 		<!-- Custom CSS styles -->
 		<link rel="stylesheet" href="css/styles.css">
-		
 	</head>
 	<body>
 
 		<header>
 			<div class="container">
-				<nav class="navbar navbar-dark bg-dark">
-					<a class="navbar-brand" href="index.php"><?php echo getWebsiteName(); ?></a>
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item">
-							<a class="nav-link" href="theforce.php">The Force</span></a>
-						</li>
-					</ul>
-				</nav>
+				<?php 
+					if($_SESSION["status"]=="login"){
+						      echo '<nav class="navbar navbar-dark bg-dark">
+										<a class="navbar-brand" href="index.php">'.getWebsiteName().'</a>
+										<ul class="navbar-nav mr-auto">
+											<li class="nav-item">
+												<a class="nav-link" href="theforce.php">The Force</span></a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="r2d2.php">feedback</span></a>
+											</li>	
+									      	<li class="nav-item dropdown">
+			                              		<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">'
+			                              		.$_SESSION["username"].'                           
+			                             		</a>
+			                              	<div class="dropdown-menu">
+			                                	<a class="dropdown-item" href="includes/logout.php">logout</a>
+			                              	</div>
+			                            	</li>
+			                            </ul>
+			                        </nav>    ';
+					}
+				?>
 
 
 					<!-- jQuery and Bootstrap JavaScript links -->
@@ -56,7 +75,6 @@
 				</div>
 			</div>
 		</header>
-
 		<main class="container">
 			
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus euismod, elit sed euismod tempor, enim elit lacinia lectus, ac gravida lectus justo ut lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut massa pulvinar, lobortis nisi eget, malesuada nisi. Etiam vitae tortor ligula. Aliquam erat volutpat. Sed ac pellentesque nisi, nec lobortis nisi. Vestibulum id turpis aliquam erat rutrum efficitur. Curabitur aliquam rutrum tempus. Fusce auctor, risus at porttitor lobortis, quam libero dapibus turpis, quis consectetur tellus risus et magna. Aliquam nec vestibulum velit. Nulla varius eget velit finibus vestibulum. Nam bibendum magna et sem lobortis luctus. Donec vel lorem varius mauris pretium tempor. Ut luctus, libero sed viverra eleifend, lorem ex laoreet nibh, vitae bibendum felis lectus sit amet diam. Suspendisse maximus elementum dolor eget consectetur. Sed lobortis malesuada sem, a ultricies sem dictum sit amet.</p>
@@ -92,13 +110,4 @@
 
 		</main>
 
-		<footer>
-			<div class="container py-5">
-				<div class="footer py-5">
-					<span class="text-muted">&copy; One with the Force.</span>
-				</div>
-			</div>
-		</footer>
-
-	</body>
-</html>
+<?php include "includes/footer.php"; ?>

@@ -1,0 +1,17 @@
+The Bootstrap template used in this website is named "Jumbotron". It was downloaded from the Bootstrap examples website: http://getbootstrap.com/docs/4.1/examples/jumbotron/
+Accessed on 05 Feb 2019.
+
+
+Content for this website has been downloaded from https://www.lipsum.com 
+Accessed on 05 Feb 2019.
+
+
+The session destroy code is considered to be standard / best-practice implementation.
+It is available as Example #1 on: http://php.net/manual/en/function.session-destroy.php
+Accessed on 16 Feb 2019.
+
+the style I used comes from
+https://www.w3schools.com/bootstrap4/bootstrap_forms.asp
+
+the AJAX I used is silimarly to
+https://www.w3schools.com/js/js_ajax_intro.asp
